@@ -15,6 +15,7 @@
 #include <cassert>
 #include <cmath>
 #include <cfloat>     // for FLT_MIN and FLT_MAX
+#include <climits>    // for LONG_MAX
 #include <unistd.h>   // for getpid
 using namespace std;
 
