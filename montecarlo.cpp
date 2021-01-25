@@ -320,7 +320,7 @@ int montecarlo(int numdirs) {
         li = LD.begin();
         li++; // skip the root, already created
         for(; li != LD.end(); li++) {
-            sprintf( parent_path,"%s/%s", PARENT_PATH, (*li).path);
+            sprintf( parent_path,"%s%s", PARENT_PATH, (*li).path);
             if((local_err = pos_mkdir(parent_path, mode)) <0) {
                 strerror_r(errno, strerr, 100);
                 print_debug(1, "Error: Unable to mkdir (pathname = %s %d\n", parent_path, errno);

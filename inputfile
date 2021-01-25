@@ -1,4 +1,4 @@
-Parent_Path: ./impress_home/ 1
+Parent_Path: ./impress_home 1
 Actuallogfile: ./logs 0
 Randseeds: Direct 10 100000 200000 300000 400000 500000 600000 700000 800000 900000 100000
 FScapacity: 127360040960 N
@@ -6,7 +6,7 @@ FSused: 34149746962 N
 Numfiles: 729195 N
 Numdirs: 109209 N
 Filesperdir: 6.677059583001401 N
-FilesizeDistr: Direct 3 1 29 0
+FilesizeDistr: Direct 3 1 29 1
 FilecountDistr: Direct 2 10.833694346264439 1.254596302219878
 Dircountfiles: Direct 2 2 5.294903713772572
 DirsizesubdirDistr: Indir DirsizesubdirDistr.txt
