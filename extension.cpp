@@ -223,7 +223,7 @@ long double make_generic_file(char * filepath, long double size, int depth, FILE
 
     int header_size=0;
     char header[1024];
-    char ext[3], full_filepath[1024], helperexec[1024];
+    char ext[4], full_filepath[1024], helperexec[1024];
     char cmd[1024], args[1024];
     int ext_number;
     

@@ -757,6 +757,9 @@ int main(int argc, char * argv[]) {
                     cur  = DirIDmap.find(0);
                     depth = ((*cur).second).depth+1;
                     ((*cur).second).files++;
+                    if ((*cur).second.path[0] == '\0') {
+                        sprintf((*cur).second.path, "/");
+                    }
                     sprintf(parent_path,"%s%sF%d", PARENT_PATH, ((*cur).second).path, i);
 
                 }
@@ -794,6 +797,9 @@ int main(int argc, char * argv[]) {
                     cur  = DirIDmap.find((*idcit2).second);
                     depth = ((*cur).second).depth+1;
                     ((*cur).second).files++;
+                    if ((*cur).second.path[0] == '\0') {
+                        sprintf((*cur).second.path, "/");
+                    }
                     sprintf(parent_path,"%s%sF%d", PARENT_PATH, ((*cur).second).path, i);
                 }    
             }
@@ -811,6 +817,9 @@ int main(int argc, char * argv[]) {
                 it3 = dirppp.first;
                 advance(it3, (int)data2);
                 ((*it3).second).files++;
+                if ((*it3).second.path[0] == '\0') {
+                    sprintf((*it3).second.path, "/");
+                }
                 sprintf(parent_path,"%s%sF%d", PARENT_PATH, ((*it3).second).path, i);
             }
             
@@ -823,6 +832,9 @@ int main(int argc, char * argv[]) {
             cur  = DirIDmap.find((int)data2);
             depth = ((*cur).second).depth+1;
             ((*cur).second).files++;
+            if ((*cur).second.path[0] == '\0') {
+                sprintf((*cur).second.path, "/");
+            }
             sprintf(parent_path,"%s%sF%d", PARENT_PATH, ((*cur).second).path, i);
         }
         
