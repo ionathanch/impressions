@@ -101,6 +101,7 @@ Depthwithcare 1 // places files carefully according to depth distributions
 Filedepthpoisson 1 // use the poisson distribution choice for file depth
 Dircountfiles 0
 Constraint 0    // activate constraint solving for FSused and numfiles
+
 Printwhat: 10   // Decides what statistics get printed
 ext 0
 sizebin 0

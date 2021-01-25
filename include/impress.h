@@ -22,7 +22,7 @@ extern char PARENT_PATH[1024];
 // change this when you add a flag
 #define NUM_FLAGS 10
 
-// List of params for Prinwhat: max is NUM_PRINTS
+// List of params for Printwhat: max is NUM_PRINTS
 #define pw_ext 0
 #define pw_size 1
 #define pw_depth 2
