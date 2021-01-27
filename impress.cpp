@@ -253,15 +253,15 @@ void init () {
         poly_degree  = IMP_input->dircountfilesparams[0];
         poly_offset  = IMP_input->dircountfilesparams[1];
         
-        for (i = 1; i< FILES_PERDIR-1; i++) {
+        for (i = 0; i < FILES_PERDIR-1; i++) {
             //for dir with files > 0
             dircountfiles_prob[i] = (poly_degree-1)*pow(poly_offset,poly_degree-1)*pow((i+poly_offset),-poly_degree); 
             temp_sum+=dircountfiles_prob[i];
         }
         
-        dircountfiles_prob[0]= 0.225;
+        // dircountfiles_prob[0]= 0.225;
         // dircountfiles_prob[0]= 0.0; // for testing only
-        temp_sum+=dircountfiles_prob[0];
+        // temp_sum+=dircountfiles_prob[0];
         total_dfc = (int)(10000*temp_sum);
         
         // last bin is cumulative prob of all files >= FILES_PERDIR-1
