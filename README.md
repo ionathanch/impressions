@@ -76,7 +76,7 @@ Additional software is required in `extension_helpers` for certain file extensio
   If this is 1 then files and dirs will be created.
   If this is 2 then only dirs will be created.
 
-## Special flags
+### Special flags
 
 * `SpecialFlags: 10`: Number of flags there are.
 * `Flat 0`: If 1, create a flat tree.
@@ -90,7 +90,7 @@ Additional software is required in `extension_helpers` for certain file extensio
 * `Dircountfiles 1`: If 1, use inverse polynomial distribution choice for number of files in directory.
 * `Constraint 0`: If 1, activate constraint solving for `FSused` and `Numfiles`.
 
-## Printing flags
+### Printing flags
 
 `Printwhat` is the number of printing flags there are; use 0/1 to toggle off/on.
 
@@ -107,4 +107,52 @@ subdirs 0
 dircountfiles 0
 constraint 0
 SpecialDirBias
+```
+
+## Significant code changes
+
+In the `montecarlo` function in `montecarlo.cpp` appears this nested loop:
+
+```cpp
+list<dir> LD;
+list<dir>::iterator ni;
+...
+int montecarlo(int numdirs) {
+    ...
+    LD.push_front(Dirs[0]);
+    ...
+    for (long i = 1; i < numdirs; i++) {
+        long token_uptil_now = 0, sum_childs_plus2 = 2;
+        long token = (rand() % sum_childs_plus2) + 1;
+        ni = LD.begin();
+        token_uptil_now += (*ni).subdirs+2;
+        while (token_uptil_now < token) {
+            ni++;
+            token_uptil_now+= (*ni).subdirs+2;
+        }
+        ...
+        LD.push_back(Dirs[i]);
+        sum_childs_plus2+=2+1;
+        ...
+    }
+    ...
+}
+```
+
+This is very slow when `numdirs` is large, mostly due to the `while` loop that walks the iterator. For now, I replace this with a direct access into the middle of the iterator. This requires an iterator capable of random access, but at the same time the container being iterated still needs the capability to have elements pushed onto its front and back, so I replace the list with a dequeue. There is probably a more proper fix to this, but likely requires actually understanding the Monte Carlo simulation code.
+
+```cpp
+deque<dir> LD;
+deque<dir>::iterator ni;
+...
+int montecarlo(int numdirs) {
+    ...
+    for (long i = i; i < numdirs; i++) {
+        ...
+        ni = LD.begin();
+        ni += token / 3;
+        ...
+    }
+    ...
+}
 ```

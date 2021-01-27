@@ -30,9 +30,9 @@ GNU General Public License in file named COPYING
 
 int max_dir_depth;
 
-list<dir> LD;
-list<dir>::iterator li;
-list<dir>::iterator ni;
+deque<dir> LD;
+deque<dir>::iterator li;
+deque<dir>::iterator ni;
 
 // multimap for Dirs with depth
 struct ltint {
@@ -275,11 +275,13 @@ int montecarlo(int numdirs) {
         #endif
 
         ni=LD.begin();
+        ni += token / 3; // fix this
+        /* This is so widly inefficient when numdirs is large
         token_uptil_now+= (*ni).subdirs+2;
         while(token_uptil_now < token) {
             ni++;
             token_uptil_now+= (*ni).subdirs+2; // fix this
-        }
+        } */
         // ni is the chosen parent
         
         #ifdef DEBUG

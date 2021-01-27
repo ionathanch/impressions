@@ -10,6 +10,7 @@
 #include <fstream>
 #include <vector>
 #include <list>
+#include <deque>
 #include <algorithm>
 #include <functional>
 #include <cassert>

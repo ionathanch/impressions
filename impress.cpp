@@ -104,9 +104,9 @@ int ATTR_NUM_FILES = 0;
 int FILE_TRUNCATOR = 0; // or (ATTR_NUM_DIRS || ATTR_NUM_FILES);
 
 extern dir * Dirs;
-extern list<dir> LD;
-extern list<dir>::iterator li;
-extern list<dir>::iterator ni;
+extern deque<dir> LD;
+extern deque<dir>::iterator li;
+extern deque<dir>::iterator ni;
 extern multimap<int, dir> DirDepthmultimap;
 extern map<int, dir> DirIDmap;
 extern multimap<int, int> Dircountfilesmmap[DEPTH_ENTRIES];
