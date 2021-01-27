@@ -111,6 +111,12 @@ SpecialDirBias
 
 ## Significant code changes
 
+### `depth.cpp`
+
+The shape of the file count and base 2 log bytes by file depth distributions are hard-coded into this file as arrays. The constants `Total_depthcount_prob`, `depthcount_prob`, and `depth_meansize` have been modified to suit my own data; the original values are from a five-year study of Windows filesystems, so they're probably far more legit.
+
+### `montecarlo.cpp`
+
 In the `montecarlo` function in `montecarlo.cpp` appears this nested loop:
 
 ```cpp
