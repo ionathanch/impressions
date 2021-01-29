@@ -275,13 +275,13 @@ int montecarlo(int numdirs) {
         #endif
 
         ni=LD.begin();
-        ni += token / 3; // fix this
-        /* This is so widly inefficient when numdirs is large
+        // If the while loop is too slow, use this instead
+        // ni += token / 3;
         token_uptil_now+= (*ni).subdirs+2;
         while(token_uptil_now < token) {
             ni++;
             token_uptil_now+= (*ni).subdirs+2; // fix this
-        } */
+        }
         // ni is the chosen parent
         
         #ifdef DEBUG
