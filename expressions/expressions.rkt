@@ -15,8 +15,8 @@ The name "Expressions" was chosen for continuity with Agrawal's *Impressions* an
 and also because I'm using Racket instead of Python and the former consists of s-expressions.
 
 Some handy commands:
-* (write-stats (expressions*)) to write stats about everything in init-dirs to stats.rkt
-* (write-stats (expressions "raw.rkt")) to write the raw stats instead of cooked stats
+* (write-stats! (expressions*)) to write stats about everything in init-dirs to stats.rkt
+* (write-stats! (expressions "raw.rkt")) to write the raw stats instead of cooked stats
 * (plot-stats (read-stats)) to plot stats read from stats.rkt
 * (plot-stats (read-stats "original.rkt") (read-stats "generated.rkt")) to plot stats comparisons
 
@@ -247,7 +247,7 @@ The cooked stats from expressions* contain mappings to percentages instead of nu
 (define (sequentialize distr)
   (hash-map distr list #t))
 
-;; write-stats : stats? [path? (build-path (current-directory) "stats.rkt")] -> void?
+;; write-stats! : stats? [path? (build-path (current-directory) "stats.rkt")] -> void?
 ;; Writes a stats object to file
 (define (write-stats! stats [path (build-path (current-directory) "stats.rkt")])
   (with-output-to-file path
